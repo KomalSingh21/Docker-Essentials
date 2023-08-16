@@ -97,7 +97,7 @@ checking containers which are in running state
 docker ps
 
 Getting into secondary shell(exec)
-docker exec -it replace container id/name /bin/bash
+docker exec -it container id/name /bin/bash
 
 exit
 
@@ -105,7 +105,7 @@ checking containers which are in running state
 docker ps
 
 Getting into secondary shell(exec)
-docker exec -it replace container id/name /bin/bash
+docker exec -it container id/name /bin/bash
 
 Terminating your container
 kill 1
@@ -115,16 +115,16 @@ docker ps -a
 
 
 To stop the container
-docker container stop replace container id/name 
+docker container stop container id/name 
 
 To Remove the container
-docker container rm  replace container id/name 
+docker container rm  container id/name 
 
 To check the image in local repository
 docker image ls
 
 To Remove the image
-docker image rm replace image id 
+docker image rm image id 
 
 -----------------------END OF LAB2--------------------------------
 
