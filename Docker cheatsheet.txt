@@ -138,9 +138,6 @@ docker pull httpd
 To check the image in local repository
 docker image ls
 
-To check the image history
-docker image history httpd
-
 Creating an httpd container
 docker container create httpd
 
@@ -231,7 +228,6 @@ docker image rm <replace image id/name >
 
 check all the images in local repository
 docker image ls
-docker image ls -a
 
 ----------------------------END OF LAB3---------------------------------------
 
