@@ -309,16 +309,31 @@ Detailed description about nginx-container
 docker container inspect nginx-container
 
 list
-ls /var/lib/docker/volumes/ct-volume1/_data/ 
+sudo ls /var/lib/docker/volumes/ct-volume1/_data/ 
 
 getting into directory
+sudo su - //This will start a new shell with root privileges, and then you can move into the directory.
 cd /var/lib/docker/volumes/ct-volume1/_data/ 
 
-creating files f1 f2 f3
+creating files f1 f2 f3 //in the docker area for testing
 touch f1 f2 f3
 
+cat index.html // This is visible because the container and the volume are synced.
+
+Access the public IP of the EC2 machine using the browser to view the default contents of index.html.
+
 Getting into editor mode(vi)
-vi /var/lib/docker/volumes/ct-volume1/_data/index.html
+vi /var/lib/docker/volumes/ct-volume1/_data/index.html //Change the title and message
+save and exit from vi.
+
+Access the public IP of the EC2 machine using the browser to view the modified contents of index.html.
+
+cd ~
+
+Let's create another container and mount it to the same volume ct-volume1
+docker run -d -p 8080:80 --name=nginx-container1 --mount src=ct-volume1,dst=/usr/share/nginx/html nginx
+
+Access the public IP of the EC2 machine:8080 using the browser to view the contents of index.html.
 
 Task 3: Deleting container and attaching the volume to another container
 
