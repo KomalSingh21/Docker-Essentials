@@ -73,5 +73,31 @@ Volume: docker run --mount src=<volume name>,dst=<pathincontainer> <image>
 tmpfs: docker run --mount type= tmpfs destination=<pathincontainer> <image>
 
 -------------------------------------------------------------------------------------------------------
+Docker Networking
+docker network ls: List networks.
+docker network inspect <network_name>: Inspect a network.
+docker network create <network_name>: Create a network.
+docker network connect <network_name> <container_name>: Connect a container to a network.
+docker network disconnect <network_name> <container_name>: Disconnect a container from a network.
+docker network rm <network_name>: Remove a network.
 
+Host Network : --network host
+None Network: -- network none
+--------------------------------------------------------------------------------------------------------
 
+Dockerfile Build Options:
+
+FROM <image_name>:<tag>: Specifies the base image.
+WORKDIR /path/to/directory: Sets the working directory inside the container.
+COPY <src> <dest>: Copies files from the host to the container.
+RUN <command>: Executes commands inside the container during the build.
+CMD ["executable","param1","param2"]: Specifies the default command to run when the container starts.
+EXPOSE <port>: Exposes a port from the container.
+ENV <key> <value>: Sets environment variables in the container.
+VOLUME /path/to/volume: Creates a mount point and marks it as externally mounted.
+USER <username or UID>: Sets the user or UID to use when running the container.
+LABEL <key>=<value>: Adds metadata to an image.
+
+docker build -t my_image:latest .
+
+-------------------------------------------------------------------------------------------------------
