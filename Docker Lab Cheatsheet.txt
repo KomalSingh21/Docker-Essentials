@@ -602,6 +602,47 @@ Shows all the containers which are Running
 docker ps
 
 ---------------------------------END OF LAB7-------------------------------------------------
+Lab 8: DockerHub
+
+Create a DockerHub account at https://hub.docker.com
+Once Sign Up is completed and you are logged in, click on repositories where the images that you push will be shown later
+In your VM terminal Login to your DockerHub account using the docker login command; provide your DockerHub username and password when prompted and make sure the login is successful
+
+Now tag ct-wordpress:v1 image as <your dockerhub account name>/ct-wordpress:v1 for pushing the image to DockerHub. Verify the tag is correct 
+# docker tag ct-wordpress:v1 <dockerhub account>/ct-wordpress:v1 
+# docker image ls
+
+Push the Docker image to DockerHub by using docker push command, you will see only the committed layer getting pushed while the layers which are already present in DockerHub are only getting mounted
+# docker push <dockerhub account>/ct-wordpress:v1
+
+Go to your DockerHub account in the browser and refresh the repositories page to verify the creation of a new repository ct-wordpress
+Verify the tag of the pushed image as well, which, as per the steps followed above, is v1
+Make a note of the Docker images in host machine by using below command
+# docker image ls
+Remove all tagged images except for the MySQL and Ubuntu image. Use the docker image rm command
+# docker image rm -f <dockerhub account>/ct-wordpress:v1 ct-wordpress:v1
+
+Now use your image which is pushed to your Docker Hub to create a new container in detached mode, you will see the pull is happening only for the missing layer.
+# docker run -d -p 8080:80 <dockerhub account>/ct-wordpress:v1
+Open the browser and access your WordPress website using Public_IP:8080
+
+Stop the running containers by using below command
+# docker ps # docker stop < container id/name > < container id/name >
+
+Delete the stopped containers completely
+# docker container rm < container id/name > < container id/name >
+
+List all the images present in Docker host and make note of image IDs
+# docker image ls
+
+Delete the docker images by using below command
+# docker image rm < image id/name > < image id/name >
+
+Execute the below command to make sure all the images are deleted
+# docker image ls 
+# docker image ls -a
+
+------------------------------------endoflab8--------------------------------------------
 
 
 
