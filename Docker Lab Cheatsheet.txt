@@ -515,7 +515,6 @@ ping -c 5 ct-c4
 
 ip addr
 
-ip route
 
 Task 4: Launch a container to host network
 
