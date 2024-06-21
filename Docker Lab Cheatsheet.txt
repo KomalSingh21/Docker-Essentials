@@ -549,16 +549,20 @@ Lab 7: Building a Dockerfile to setup an Ubuntu container with WordPress applica
 Task 1: Deploying MySQL and WordPress containers
 
 Create wordpress directory
+```
 mkdir wordpress
-
-Getting into wordpress
+```
+Getting into Wordpress
+```
 cd wordpress
+```
 
 Editor mode(vi) and getting into Dockerfile
+```
 vi Dockerfile
-
+```
 #Content of Dockerfile to paste
-
+```
 FROM ubuntu:20.04
 MAINTAINER ADMIN "admin@cloudthat.com"
 ENV DEBIAN_FRONTEND=noninteractive
@@ -575,31 +579,42 @@ RUN rm /var/www/html/index.html && \
 chown -R www-data:www-data /var/www/html
 EXPOSE 80
 CMD ["/usr/sbin/apache2ctl","-D","FOREGROUND"]
-
+```
 #End of Dockerfile
 
 # You can download the above Dockerfile from S3 using - wget https://hpe-content.s3.ap-south-1.amazonaws.com/Dockerfile
 
 Creating a new image wordpress:v1
+```
 docker build -t ct-wordpress:v1 .
-
+```
 list of all images
+```
 docker image ls
-
+```
 Creating a new network called ct-bridge and network type bridge
+```
 docker network create --driver bridge ct-bridge 
+```
 
-It contains all the details of your wordpress
+It contains all the details of your Wordpress
+```
 docker run -d --network ct-bridge --name mysql -e MYSQL_DATABASE=wordpress -e MYSQL_USER=admin -e MYSQL_PASSWORD=password -e MYSQL_ROOT_PASSWORD=password mysql:5.7
+```
 
 Shows all the containers which are Running
+```
 docker ps 
-
+```
 Running ct-wordpress:v1 container attached to ct-bridge network
+```
 docker run -d --network ct-bridge -p 80:80 ct-wordpress:v1
+```
 
 Shows all the containers which are Running
+```
 docker ps
+```
 
 ---------------------------------END OF LAB7-------------------------------------------------
 
