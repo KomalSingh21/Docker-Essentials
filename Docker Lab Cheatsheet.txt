@@ -640,7 +640,7 @@ docker push <dockerhub account>/ct-wordpress:v1
 
 Go to your DockerHub account in the browser and refresh the repositories page to verify the creation of a new repository ct-wordpress
 
-Open the browser and access your WordPress website using Public_IP:8080
+Open the browser and access your WordPress website using Public_IP:80
 
 ---------------------------------END OF LAB8-------------------------------------------------
 
