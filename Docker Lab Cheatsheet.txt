@@ -622,7 +622,9 @@ Lab 8 : Pushing custom images to dockerhub
 Create a DockerHub account at https://hub.docker.com
  
 In your VM terminal Login to your DockerHub account using the docker login command; provide your DockerHub username and password when prompted and make sure the login is successful
-
+```
+docker login
+```
 
 Now tag ct-wordpress:v1 image as <your dockerhub account name>/ct-wordpress:v1 for pushing the image to DockerHub. Verify the tag is correct 
 
